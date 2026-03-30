@@ -5,10 +5,10 @@
 ## Find html and css codes in following files
 
 ## Website.html
-C:\Users\leahmrdz22\DevSource\lmr-GEOG678Spring26\lab\week3\HTML_code
+lab\week3\HTML_code
 
 ## website-style.css
-C:\Users\leahmrdz22\DevSource\lmr-GEOG678Spring26\lab\week3\CSS_code
+lab\week3\CSS_code
 
 ## LINK TO WEBSITE
 file:///C:/Users/leahm/Notepad++/Resume_Website_buildr_things/Leah_ResWebsite_build.html

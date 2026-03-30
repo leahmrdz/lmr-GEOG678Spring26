@@ -4,9 +4,9 @@
 
 ## Find html and css codes in following files
 
-[Website.html] (lab\week3\HTML_code)
+[Website_html] (lab\week3\HTML_code.md)
 
-[website-style.css] (lab\week3\CSS_code)
+[website-style_css] (lab\week3\CSS_code.md)
 
 ## LINK TO WEBSITE
 file:///C:/Users/leahm/Notepad++/Resume_Website_buildr_things/Leah_ResWebsite_build.html

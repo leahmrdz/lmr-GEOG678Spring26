@@ -1,0 +1,125 @@
+##
+
+body {
+  background-image:url("https://cdn.pixabay.com/photo/2017/10/05/21/28/clouds-2821064_1280.png");
+  text-align:center;
+  font-family: Trebuchet MS, sans-serif;
+}
+/*fix Leah MataRodriguez *****************************/
+header h1{
+	color:indigo;
+	font-size:100px;
+    font-family: verdana;
+}
+/*fix KLBK Meteorologist *****************************/
+header h2{
+	color:aliceblue;
+	font-size:100px;
+    font-family: verdana;
+}
+
+nav{
+	background-color:aliceblue;
+	opacity: 0.8;
+	font-size:30px;
+	color:chocolate;
+	text-align:center;
+	word-spacing:100px;
+	width:100%;
+}
+
+#reel a{
+	color: mediumslateblue;
+	font-family:verdana;
+	font-size:100px;
+	font-weight:bold;
+}
+/*fix bulk of resume content **************************/
+.resume-bulk h2{
+	font-size:50px;
+	color: blue;
+}
+
+/* fixes bullet points and numbers in lists to center them with text */
+ul, ol {
+	display: inline-block;
+	text-align:left;
+}
+
+/*fix bullet points **********************************/
+.resume-bulk li {
+	font-size:25px;
+}
+
+/* fix education section ****************************/
+#edu{
+	background-color:lightsteelblue;
+	opacity: 0.8;
+	padding: 30px;
+}
+
+#edu h3{
+	font-size:40px;
+	color:darkblue;
+}
+
+#edu h4{
+	font-size:25px;
+	color:darkblue;
+}
+
+/* fix work experience section **************************/
+#work{
+	background-color:lightsteelblue;
+	opacity: 0.8;
+	padding: 30px;
+}
+
+#work h3{
+	font-size:40px;
+	color:darkblue;
+}
+
+#work p{
+	font-size:25px;
+	text-align:justify;
+}
+
+/* fix skills section **************************/
+#skill{
+	background-color:lightsteelblue;
+	opacity: 0.8;
+	padding: 30px;
+}
+
+/* fix references section **************************/
+#references{
+	background-color:lightsteelblue;
+	opacity: 0.8;
+	padding: 30px;
+}
+
+#references li{
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#references p{
+	font-size: 25px;
+}
+
+/* fix footer **************************/
+footer{
+	background-color: lightslategrey;
+	opacity:100%;
+	font-size:40px;
+	padding: 20px;
+	color:aliceblue;
+}
+
+table{
+  font-size:25px;
+  width: 100%;  /*make table take up full width***********************/
+  text-align:center;
+  table-layout: fixed;  /*make all cells equal width*/
+}

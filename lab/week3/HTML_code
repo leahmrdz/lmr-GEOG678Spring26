@@ -1,0 +1,156 @@
+##
+<!-- Leah's Resume Website built from scratch -->
+
+<!-- Declaration of version of HTML -->
+
+<!DOCTYPE html>
+
+
+<html> 
+<!-- Linking css stylesheet-->
+  <head>
+  <link rel="stylesheet" href="styles.css">
+  <title>Leah Mata-Rodriguez Resume</title>
+  </head>
+  
+  <body>
+	<header>
+		<h1>Leah Mata-Rodriguez</h1>
+		<h2>KLBK Weekend Meteorologist</h2>
+		  <nav>
+	        <a href="#edu">Education</a>
+			<a href="#work">Work_Experience</a>
+			<a href="#skill">Skills</a>
+			<a href="#references">References</a>
+		  </nav>
+		<br>
+		<img src="https://www.everythinglubbock.com/wp-content/uploads/sites/35/2024/08/Leah_EL_About_070124-2.png?w=1040&h=720&crop=1"
+		width="490px" height="350px" alt="Professional work photo of Meteorologist Leah Rodriguez.">
+	</header>
+  <br>
+	<main>
+		<section id="reel">
+		<a href="https://youtu.be/ODYODxZ7PwY" target="_blank">Check out my broadcast reel!</a>
+		</section>
+		
+		<br>
+		<section class="resume-bulk">
+		
+		  <section id="edu">
+		  <h2>Education</h2>
+		  <br>
+		  <h3>Pearsall High School</h3>
+		  <h4>High School Diploma</h4>
+			  <ul>
+			  <li>Class Salutatorian</li>
+			  <li>Graduated May 2021</li>
+			  <li>Pearsall, TX</li>
+			  </ul>
+		  <h3>Southwest Texas Junior College</h3>
+		  <h4>Associate of Arts</h4>
+			  <ul>
+			  <li>Phi Theta Kappa Member</li>
+			  <li>Graduated May 2021</li>
+			  <li>Uvalde, TX</li>
+			  </ul>
+		  <h3>Texas A&M University</h3>
+		  <h4>Bachelor of Science in Meteorology</h4>
+			  <ul>
+			  <li>GPA: 3.477</li>
+			  <li>Graduated May 2024</li>
+			  <li>College Station, TX</li>
+			  </ul>
+		  <h4>Master of Geoscience in<br>
+		  Geographic Information Science and Technology</h4>
+		  	  <ul>
+		  	  <li>Expected Graduation May 2027</li>
+			  <li>College Station, TX</li>
+			  </ul>
+	      </section>
+		
+		<br>
+		  <section id="work">
+		    <h2>Work Experience</h2>
+		    <h3>Levy Restaurants Suite Attendant</h3>
+		    <p>Set up serving ware and food for suite holders prior to football 
+			games and other entertainment events at Kyle Field in College Station,TX.
+			Restocked food and drinks as needed. Cleaned and organized suite(s) after the event. 
+			August 2022 to June 2024</p>
+		    <br>
+		    <h3>KSAT 12 Intern</h3>
+		    <p>Worked 20 hours a week alongside all the station's meteorologists. My daily
+		responsibility was to create weather articles for the website. These were
+		typically scientific or explanatory, but I also had creative liberty to write fun
+		articles. I forecasted the weather to create my own show stack and was able
+		to practice on the green screen with my built show or get tested with a random
+		assortment of graphics. During a severe weather event, I assisted with
+		background updates to support the on-air meteorologist. I also got to
+		accompany meteorologists to interviews and events with the public.
+		Throughout the summer, I worked different days and shadowed all the shifts
+		to interact and learn from each of the meteorologists. Summer 2023</p>
+		    <br>
+		    <h3>KLBK Weekend Meteorologist</h3>
+		    <p>Cover the weekend evening shift by forecasting, building an informational and
+		attractive weather hit, and writing social media posts and articles to share the
+		weather story for the South Plains and Eastern New Mexico regions. I'll cover
+		the morning weekday or evening weekday shift as needed. I am proficient with
+		the Baron graphics system. Non-weather duties include creating agricultural
+		stories based on interviews from farmers, agronomists, and agricultural
+		students, as well as cultural news stories. News packages edited using Adobe
+		Premiere Pro. June 2024 to current</p>
+		  </section>
+		  
+		<br>
+		  <section id="skill">
+		    <h2>Skills</h2>
+		    <ul>
+			    <li>Dependable</li>
+			    <li>Team Player</li>
+			    <li>Professional Communicator</li>
+			    <li>Well Organized</li>
+		    </ul>
+	      </section>
+		  
+		<br>
+		<aside id="references">
+			<h2>References</h2>
+			<ol>
+			<li>Jacob Riley</li>
+				<p>KLBK Chief Meteorologist<p>
+				<p>jriley@klbk13.tv</p>
+			<li>Sarah Spivey</li>
+				<p>KSAT 12 Meteorologist</p>
+				<p>sspivey@ksat.com</p>
+			</ol>
+		</aside>
+	  
+		</section>
+	
+	</main>
+  
+	<footer>
+		<table>
+		<tr>
+		  <th> </th>
+		  <th>
+		    <h2>Contact Information</h2>
+		  </th>
+		</tr>
+		<tr>
+			<th>Phone</th>
+			<th>Email</th>
+			<th>Facebook</th>
+		</tr>
+		<br>
+		<tr>
+			<td>(830)334-2463</td>
+			<td>leahmrdz22@tamu.edu</td>
+			<td>Meteorologist Leah Rodriguez</td>
+		</tr>
+		</table>	
+	</footer>
+  </body>
+
+
+
+</html>

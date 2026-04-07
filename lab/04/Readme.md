@@ -6,4 +6,5 @@ Open [input.html](lab\04\BB-input.html)
 
 Open [the function file](lab\04\BB-function.js)
 
-Open [the data file](lab\04\BB-data.js)
+Open [the data file](lmr-GEOG678Spring26\lab\04\BB-data.js)
+

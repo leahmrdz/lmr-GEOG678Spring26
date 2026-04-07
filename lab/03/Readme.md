@@ -6,7 +6,7 @@
 
 [Website_html] (lab\week3\HTML_code.md)
 
-[website-style_css] (lab\week3\CSS_code.md)
+[website-style_css] (lab\week3\CSS_code.md)  
 
 ## LINK TO WEBSITE
 file:///C:/Users/leahm/Notepad++/Resume_Website_buildr_things/Leah_ResWebsite_build.html

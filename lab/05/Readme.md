@@ -1,3 +1,3 @@
-## Lab Number X
+## Lab Number 5
 ### By Leah Mata-Rodriguez
-## Lab Description:
+## Lab Description: Learn Leaflet Basics

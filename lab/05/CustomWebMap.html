@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Leah's First Web Map</title>
+     <!-- Disable unwanted scaling of page -->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+   integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+   crossorigin=""/>
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+  </head>
+
+  <body>
+     <!-- A div for where the map will be -->
+    <div id="map"></div>
+
+    <!-- OpenStreetMap Tiles and set coordinates-->
+    <script>TAMUmain();
+     function TAMUmain() {
+      var map = L.map('map').setView([30.6084, -96.3402], 15);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 75,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+    // TAMU landmarks coordinates
+        var kyleField = [30.609814, -96.340407];
+        var omBuilding = [30.617703, -96.336774];
+        var academicBuilding = [30.6159, -96.3413];
+
+    //Geolocation: overrriding the setView method//
+        map.locate({setView: true, maxZoom: 100});
+
+    // tell the user about the location that was detected//
+        function onLocationFound(e) {
+        var radius = e.accuracy;
+
+         L.marker(e.latlng).addTo(map)
+        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+        L.circle(e.latlng, radius).addTo(map);}
+        map.on('locationfound', onLocationFound);
+
+     // Location error event handler
+        function onLocationError(e) {
+    // If geolocation fails, center on Kyle Field
+            map.setView(kyleField, 15);
+            alert("Location access was denied or unavailable. Map centered on Kyle Field.");
+        }
+
+    //Show ccordinates where user clicks in a popup//
+        var popup = L.popup();
+        function onMapClick(e) {
+        popup
+         .setLatLng(e.latlng)
+         .setContent("You clicked the map at " + e.latlng.toString())
+         .openOn(map);}
+        map.on('click', onMapClick);
+
+    //Add a circle around Kyle Field, also need to define radius//
+        var kyleFieldcircle = L.circle(kyleField, {
+        color: 'maroon',
+        fillColor: '#872410',
+        fillOpacity: 0.5,
+        radius: 200
+        }).addTo(map);
+
+    // Add a stand alone pop, that's also binded to the circle, to say 'Kyle Field'//
+        kyleFieldcircle.bindPopup("Kyle Field")
+        kyleFieldcircle.openPopup();
+
+    // custom icons for O&M Building and Academic Building//
+        const AggieIcon = L.divIcon({
+        html: `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8B1A10">
+        <path d="M720-120H280v-520l280-280 50 50q7 7 11.5 19t4.5 23v14l-44 174h258q32 0 56 24t24 56v80q0 7-2 15t-4 15L794-168q-9 20-30 34t-44 14Zm-360-80h360l120-280v-80H480l54-220-174 174v406Zm0-406v406-406Zm-80-34v80H160v360h120v80H80v-520h200Z"/>
+        </svg>`,
+        className: '', //makes icon transparent//
+        iconSize:     [38, 95], // size of the icon//
+        iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location//
+        })
+
+        const BookIcon = L.divIcon({
+        html: `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8B1A10">
+            <path d="M300-80q-58 0-99-41t-41-99v-520q0-58 41-99t99-41h500v600q-25 0-42.5 17.5T740-220q0 25 17.5 42.5T800-160v80H300Zm-60-267q14-7 29-10t31-3h20v-440h-20q-25 0-42.5 17.5T240-740v393Zm160-13h320v-440H400v440Zm-160 13v-453 453Zm60 187h373q-6-14-9.5-28.5T660-220q0-16 3-31t10-29H300q-26 0-43 17.5T240-220q0 26 17 43t43 17Z"/>
+            </svg>`,
+        className: '', //makes icon transparent//
+        iconSize:     [38, 95], // size of the icon//
+        iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location//
+        })
+
+        L.marker(omBuilding, {icon: BookIcon}).addTo(map).bindPopup("Eller O&M Building").openPopup();
+        L.marker(academicBuilding, {icon: AggieIcon}).addTo(map).bindPopup("Academic Building").openPopup();
+    // only academicBuilding pop up is showing because the omBuilding pop up is being overrriden//
+
+    // Register event handlers
+        map.on('locationfound', onLocationFound);
+        map.on('locationerror', onLocationError);
+    } 
+    </script>
+  </body>

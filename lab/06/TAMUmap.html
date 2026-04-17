@@ -1,0 +1,144 @@
+<!-- GEOG 678 Lab 6 Custom TAMU map -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Leah Mata-Rodriguez TAMU Map</title>
+	
+	<!-- Leaflet CSS file -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+   crossorigin=""/>
+   
+   <style>
+    #mapid {
+    height: 600px;
+    width: 800px;
+  }
+
+  /* CSS for custom info */
+    .info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: rgba(255,255,255,0.8);
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    }
+
+    .info h4 {
+    margin: 0 0 5px;
+    color: #777;
+    }
+
+   </style>
+   
+   
+   
+  </head>
+  <body>
+    <!-- Leaflet JavaScript file; Make sure you put this AFTER Leaflet's CSS -->
+	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+   integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+   crossorigin=""></script>
+
+     <div id="mapid"></div>
+  
+    <!-- Call the TAMU buildings GeoJSON file -->
+    <script type="text/javascript" src="tamubuildings.js"></script>
+
+      <script>
+      
+      // TAMU coordinates: 30.6188, -96.3365
+      var map = L.map('mapid').setView([30.6188, -96.3365], 15);
+      
+      // Using OpenStreetMap tiles //
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 18
+      }).addTo(map);
+
+      // bring in tamu GeoJSON data//
+      L.geoJSON(tamu).addTo(map);
+
+      // Change building color////
+      function style(feature) {
+        return {
+          weight: 2,
+          opacity: 1,
+          color: '#800000', // Maroon color
+          dashArray: '3',
+          fillOpacity: 0.7,
+          fillColor: '#800000'
+        };
+      }
+      L.geoJson(tamu, {style: style}).addTo(map);
+
+      // need this line to make sure the GeoJSON layer is accessible by defining it before listeners//
+    var geojson;
+    // ... our listeners
+    
+
+    //define an event listener for hovering mouse//
+    function highlightFeature(e) {
+    var layer = e.target;
+    layer.setStyle({
+        weight: 5,
+        color: 'white',
+        dashArray: '',
+        fillColor: 'white',
+        fillOpacity: 0.7
+
+    });
+    layer.bringToFront();
+    info.update(layer.feature.properties); /// added for custom info control ///
+
+    }
+
+    // when the mouse leaves the style resets//
+    function resetHighlight(e) {
+    geojson.resetStyle(e.target);
+    }
+
+    //zooms to building on click//
+    function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+    info.update();   /// added for custom info control ///
+    }  
+
+    //add the listeners on our building layers//
+    function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+    }
+
+    geojson = L.geoJson(tamu, {
+      style: style,
+      onEachFeature: onEachFeature
+    }).addTo(map);
+
+    /////
+    // custom info control//
+    var info = L.control();
+
+    info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+    };
+
+    // method that we will use to update the control based on feature properties passed
+    info.update = function (props) {
+    this._div.innerHTML = '<h4>Building Name and Abreviation</h4>' +  (props ?
+        '<b>' + props.BldgName + '</b><br />' + props.BldgAbbr
+        : 'Hover over a building');
+    };
+
+    info.addTo(map);
+
+      </script>
+  </body>
+</html>

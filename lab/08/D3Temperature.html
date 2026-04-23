@@ -1,0 +1,134 @@
+<!-- creating a line chart with D3-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Temperature line chart using D3</title>
+
+    <!-- Include the D3 script file-->
+     <script src="https://d3js.org/d3.v4.min.js"></script>
+
+     <!-- modify chart features with CSS-->
+      <style>
+        #chart div{
+            font: 10px sans-serif;
+            background-color: steelblue;
+            text-align: right;
+            padding: 3px;
+            margin: 1px;
+            color: white;
+        }
+      </style>
+
+
+  </head>
+  <body>
+     <div id="temp_chart"></div>
+
+     <script>
+        // set the dimensions and margins of the graph
+    var margin = {top: 10, right: 30, bottom: 30, left: 60},
+    width = 460 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+        
+    //create the drawing layer
+    var svg = d3.select("#temp_chart")
+  .append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+         const high_data = [
+        { date: "Sat", value: 82 },
+        { date: "Sun", value: 81 },
+        { date: "Mon", value: 81 },
+        { date: "Tues", value: 70 },
+        { date: "Wed", value: 77 },
+        { date: "Thur", value: 78 },
+        { date: "Fri", value: 79 }, 
+        { date: "Next Sat", value: 80}
+        ];
+
+         const low_data = [
+        { date: "Sat", value: 67 },
+        { date: "Sun", value: 59 },
+        { date: "Mon", value: 50 },
+        { date: "Tues", value: 47 },
+        { date: "Wed", value: 51 },
+        { date: "Thur", value: 60 },
+        { date: "Fri", value: 66 }, 
+        { date: "Next Sat", value: 66 }
+        ];
+
+          // group the data: I want to draw one line per group
+        var data= [
+        { name: "High", values: high_data },
+        { name: "Low", values: low_data }
+        ];
+
+          // Add X axis
+        var x = d3.scalePoint()
+        .domain(high_data.map(function(d) { return d.date; }))
+        .range([0, width])
+        .padding(0.5);
+
+        // Add Y axis - based on both lines
+      var y = d3.scaleLinear()
+     .domain([
+    d3.min(low_data, function(d) { return d.value; }),
+    d3.max(high_data, function(d) { return d.value; })
+    ])
+    .nice()
+    .range([height, 0]);
+
+      // append the svg object to the body of the page
+    svg.append("g")
+    .attr("transform",
+          "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
+
+    svg.append("g")
+    .call(d3.axisLeft(y));
+
+
+    // color palette
+    var color = d3.scaleOrdinal()
+    .domain(["High", "Low"])
+    .range(['#e41a1c','#377eb8'])
+
+    // Draw the line
+    var line = d3.line()
+  .x(function(d) { return x(d.date); })
+  .y(function(d) { return y(d.value); });
+
+    // draw lines together
+        svg.selectAll(".line")
+        .data(data)
+        .enter()
+        .append("path")
+        .attr("fill", "none")
+        .attr("stroke", function(d){ return color(d.name) })
+        .attr("stroke-width", 1.5)
+        .attr("d", function(d){return line(d.values);});
+
+    // Add title to x axis
+        svg.append("text")
+    .attr("text-anchor", "middle")
+     .attr("x", width / 2)
+    .attr("y", height + 30)
+    .text("Day");
+
+    //Add title to y axis
+    svg.append("text")
+    .attr("text-anchor", "middle")
+    .attr("transform", "rotate(-90)")
+    .attr("x", -height / 2)
+    .attr("y", -40)
+    .text("Temperature (°F)");
+
+     </script>
+
+  </body>
+</html>
